@@ -12,11 +12,11 @@ import RxCocoa
 import HomeKit
 
 class MHRoomCell: RxCollectionViewCell {
-    var mainView: UIView!
-    var roomImage: UIImageView!
-    var textStack: UIStackView!
-    var roomLabel: UILabel!
-    var roomAccessoriesLabel: UILabel!
+    private var mainView: UIView!
+    private var roomImage: UIImageView!
+    private var textStack: UIStackView!
+    private var roomLabel: UILabel!
+    private var roomAccessoriesLabel: UILabel!
     var button: UIButton!
     
     // MARK: - Lifecycle
