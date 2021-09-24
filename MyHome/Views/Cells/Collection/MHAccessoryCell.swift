@@ -13,6 +13,7 @@ import RxCocoa
 import HomeKit
 
 class MHAccessoryCell: RxCollectionViewCell {
+    // MARK: - UI
     private var mainView: UIView!
     private var accessoryImage: UIImageView!
     private var accessoryNameLabel: UILabel!

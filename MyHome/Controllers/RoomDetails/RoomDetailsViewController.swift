@@ -27,8 +27,7 @@ class RoomDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        homeManager.delegate = self
+
         makeUI()
         prepare()
         subscribe()
@@ -59,10 +58,6 @@ class RoomDetailsViewController: UIViewController {
                 switch item {
                 case .accessory(let service):
                     return self.accessoryCell(indexPath: indexPath, service: service)
-//                case .button:
-//                    return self.buttonCell(indexPath: indexPath)
-//                case .room(let room):
-//                    return self.roomCell(indexPath: indexPath, room: room)
                 }
             },
             configureSupplementaryView: { _, _, _, _ in
@@ -71,19 +66,6 @@ class RoomDetailsViewController: UIViewController {
     }
     
     // MARK: - Cells
-//    private func buttonCell(indexPath: IndexPath) -> MHCollectionViewCell {
-//        let cell: MHButtonCell = collectionView.cell(indexPath: indexPath)
-//        cell.configure(text: "text")
-//        
-//        return cell
-//    }
-//    
-//    private func roomCell(indexPath: IndexPath, room: HMRoom) -> MHCollectionViewCell {
-//        let cell: MHRoomCell = collectionView.cell(indexPath: indexPath)
-//        cell.configure(with: room)
-//        
-//        return cell
-//    }
     private func accessoryCell(indexPath: IndexPath, service: HMService) -> MHCollectionViewCell {
         let cell: MHAccessoryCell = collectionView.cell(indexPath: indexPath)
         cell.configure(with: service)
@@ -114,10 +96,6 @@ extension RoomDetailsViewController: UICollectionViewDelegateFlowLayout {
         switch item {
         case .accessory:
             return MHAccessoryCell.cellSize
-//        case .button:
-//            return MHButtonCell.cellSize
-//        case .room:
-//            return MHRoomCell.cellSize
         }
     }
     
@@ -128,15 +106,6 @@ extension RoomDetailsViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
     }
 }
-
-// MARK: - HMHomeManagerDelegate
-//extension RoomDetailsViewController: HMHomeManagerDelegate {
-//    func homeManagerDidUpdateHomes(_ manager: HMHomeManager) {
-//        guard let primaryHome = manager.homes.first else { return }
-//
-//        viewModel.primaryHome.accept(primaryHome)
-//    }
-//}
 
 extension RoomDetailsViewController {
     func makeUI() {
@@ -180,6 +149,5 @@ extension RoomDetailsViewController {
     @objc func close(sender: AnyObject) {
         dismiss(animated: true, completion: nil)
     }
-
 }
 

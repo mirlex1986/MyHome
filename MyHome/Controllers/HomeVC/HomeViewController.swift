@@ -42,14 +42,6 @@ class HomeViewController: UIViewController {
         collectionView.rx
             .setDelegate(self)
             .disposed(by: viewModel.disposeBag)
-        
-//        collectionView.rx.itemSelected
-//            .subscribe(onNext: { [weak self] _ in
-//                guard let self = self else { return }
-//                
-//                
-//            })
-//            .disposed(by: viewModel.disposeBag)
     }
     
     private func subscribe() {
@@ -182,6 +174,5 @@ extension HomeViewController {
         
         return collectionView
     }
-
 }
 

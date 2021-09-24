@@ -50,12 +50,6 @@ final class HomeViewModel {
     }
 }
 
-// MARK: - Functions
-extension HomeViewModel  {
-    
-}
-
-
 // MARK: - Data source
 extension HomeViewModel {
     enum SectionModel {
