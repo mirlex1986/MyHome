@@ -15,7 +15,7 @@ import HomeKit
 class MHAccessoryCell: RxCollectionViewCell {
     // MARK: - UI
     private var mainView: UIView!
-    private var accessoryImage: UIImageView!
+    var accessoryImage: UIImageView!
     private var accessoryNameLabel: UILabel!
     private var accessoryValueLabel: UILabel!
     var accessoryStateSwich: UISwitch!
@@ -55,7 +55,7 @@ class MHAccessoryCell: RxCollectionViewCell {
                 service.characteristics.forEach { characteristic in
                     if characteristic.characteristicType == HMCharacteristicTypePowerState,
                         let value = characteristic.value as? Bool {
-                        accessoryImage.image = value ? UIImage(systemName: "lightbulb.fill") : UIImage(systemName: "lightbulb")
+                        accessoryImage.image = UIImage(systemName: "lightbulb.fill")
                         accessoryStateSwich.isOn = value
                         accessoryStateSwich.isHidden = false
                     }
@@ -72,7 +72,7 @@ class MHAccessoryCell: RxCollectionViewCell {
 
                 if characteristic.characteristicType == HMCharacteristicTypeCurrentTemperature,
                    let tempValue = (characteristic.value as? NSNumber)?.floatValue {
-                    accessoryValueLabel.text = "\(String(format: "%.1f", tempValue))"
+                    accessoryValueLabel.text = "\(String(format: "%.1f", tempValue))º"
                     accessoryImage.image = UIImage(systemName: "thermometer")
                     accessoryImage.contentMode = .scaleAspectFit
                     accessoryValueLabel.isHidden = false

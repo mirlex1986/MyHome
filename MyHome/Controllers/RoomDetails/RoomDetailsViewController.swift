@@ -76,7 +76,11 @@ class RoomDetailsViewController: UIViewController {
                 service.characteristics.forEach { characteristic in
                     if characteristic.characteristicType == HMCharacteristicTypePowerState {
                         characteristic.writeValue(value) { error in
-                            print(error?.localizedDescription)
+                            if error == nil {
+                                cell.accessoryImage.tintColor = value ? .red : .gray
+                            } else {
+                                print(error?.localizedDescription)
+                            }
                         }
                     }
                 }

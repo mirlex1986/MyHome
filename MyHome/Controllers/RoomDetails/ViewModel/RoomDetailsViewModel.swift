@@ -30,7 +30,7 @@ final class RoomDetailsViewModel {
         room
             .subscribe(onNext: { [weak self] room in
                 guard let self = self, room != nil else { return }
-                
+
                 self.accessories.accept(room?.accessories)
             })
             .disposed(by: disposeBag)
@@ -45,13 +45,13 @@ final class RoomDetailsViewModel {
     }
     
     func configureSections() {
-        var items: [ItemModel] = []
         guard let accessories = accessories.value else { return }
+        var items: [ItemModel] = []
         
         accessories.forEach { accessory in
             accessory.services.forEach { service in
                 if service.isUserInteractive || service.isPrimaryService {
-                items.append(.accessory(service: service))
+                    items.append(.accessory(service: service))
                 }
             }
         }
