@@ -17,7 +17,6 @@ class MHRoomCell: RxCollectionViewCell {
     var textStack: UIStackView!
     var roomLabel: UILabel!
     var roomAccessoriesLabel: UILabel!
-    var rightImage: UIImageView!
     var button: UIButton!
     
     // MARK: - Lifecycle
@@ -74,20 +73,10 @@ extension MHRoomCell {
         roomImage.clipsToBounds = true
         mainView.addSubview(roomImage)
         roomImage.snp.makeConstraints {
-//            $0.left.top.bottom.equalToSuperview()
-//            $0.size.equalTo(60)
             $0.centerY.equalToSuperview()
             $0.left.equalToSuperview().inset(8)
             $0.size.equalTo(40)
         }
-//        
-//        rightImage = UIImageView()
-//        rightImage.image = Images.rightSide
-//        mainView.addSubview(rightImage)
-//        rightImage.snp.makeConstraints {
-//            $0.right.top.bottom.equalToSuperview().inset(15)
-//            $0.size.equalTo(20)
-//        }
         
         textStack = UIStackView()
         mainView.addSubview(textStack)
