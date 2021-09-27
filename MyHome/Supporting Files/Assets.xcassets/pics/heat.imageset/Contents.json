@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "lightbulb.png",
+      "filename" : "heat.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "heat-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "heat-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

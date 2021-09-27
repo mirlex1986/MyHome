@@ -55,7 +55,7 @@ class MHAccessoryCell: RxCollectionViewCell {
                 service.characteristics.forEach { characteristic in
                     if characteristic.characteristicType == HMCharacteristicTypePowerState,
                         let value = characteristic.value as? Bool {
-                        accessoryImage.image = UIImage(systemName: "lightbulb.fill")
+                        accessoryImage.image = Images.lamp
                         accessoryStateSwich.isOn = value
                         accessoryStateSwich.isHidden = false
                     }
@@ -66,14 +66,14 @@ class MHAccessoryCell: RxCollectionViewCell {
                 if characteristic.characteristicType == HMCharacteristicTypeCurrentRelativeHumidity,
                    let humidityValue = (characteristic.value as? NSNumber)?.floatValue {
                     accessoryValueLabel.text = "\(String(format: "%.f", humidityValue))%"
-                    accessoryImage.image = UIImage(systemName: "humidity")
+                    accessoryImage.image = Images.humidity
                     accessoryValueLabel.isHidden = false
                 }
 
                 if characteristic.characteristicType == HMCharacteristicTypeCurrentTemperature,
                    let tempValue = (characteristic.value as? NSNumber)?.floatValue {
                     accessoryValueLabel.text = "\(String(format: "%.1f", tempValue))º"
-                    accessoryImage.image = UIImage(systemName: "thermometer")
+                    accessoryImage.image = Images.heat
                     accessoryImage.contentMode = .scaleAspectFit
                     accessoryValueLabel.isHidden = false
                 }

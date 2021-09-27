@@ -79,7 +79,7 @@ class RoomDetailsViewController: UIViewController {
                             if error == nil {
                                 cell.accessoryImage.tintColor = value ? .red : .gray
                             } else {
-                                print(error?.localizedDescription)
+                                print(error?.localizedDescription as Any)
                             }
                         }
                     }

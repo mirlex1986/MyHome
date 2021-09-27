@@ -10,5 +10,8 @@ import UIKit
 
 enum Images {
     static var rightSide: UIImage { UIImage(named: "rightSide") ?? UIImage() }
-    static var lightbulb: UIImage { UIImage(named: "lightbulb") ?? UIImage() }
+    static var lamp: UIImage { UIImage(named: "lamp") ?? UIImage() }
+    static var heat: UIImage { UIImage(named: "heat") ?? UIImage() }
+    static var humidity: UIImage { UIImage(named: "humidity") ?? UIImage() }
+    
 }
