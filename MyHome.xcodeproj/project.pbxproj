@@ -11,6 +11,7 @@
 		5B8F1F0F26FDC38900DBEFEB /* RoomDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F1F0E26FDC38900DBEFEB /* RoomDetailsViewController.swift */; };
 		5B8F1F1126FDC42300DBEFEB /* RoomDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F1F1026FDC42300DBEFEB /* RoomDetailsViewModel.swift */; };
 		5B8F1F1326FDC70100DBEFEB /* MHAccessoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F1F1226FDC70100DBEFEB /* MHAccessoryCell.swift */; };
+		5B8F1F1526FE34D800DBEFEB /* MHDataTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8F1F1426FE34D800DBEFEB /* MHDataTypeCell.swift */; };
 		5BDF42EA26F9BAB6001CE585 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDF42E926F9BAB6001CE585 /* AppDelegate.swift */; };
 		5BDF42EE26F9BAB6001CE585 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDF42ED26F9BAB6001CE585 /* HomeViewController.swift */; };
 		5BDF42F326F9BABB001CE585 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BDF42F226F9BABB001CE585 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		5B8F1F0E26FDC38900DBEFEB /* RoomDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailsViewController.swift; sourceTree = "<group>"; };
 		5B8F1F1026FDC42300DBEFEB /* RoomDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailsViewModel.swift; sourceTree = "<group>"; };
 		5B8F1F1226FDC70100DBEFEB /* MHAccessoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHAccessoryCell.swift; sourceTree = "<group>"; };
+		5B8F1F1426FE34D800DBEFEB /* MHDataTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHDataTypeCell.swift; sourceTree = "<group>"; };
 		5BDF42E626F9BAB6001CE585 /* MyHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BDF42E926F9BAB6001CE585 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BDF42ED26F9BAB6001CE585 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				5BDF430A26F9C65C001CE585 /* MHCollectionViewCell.swift */,
 				5BDF431B26F9D47E001CE585 /* MHRoomCell.swift */,
 				5B8F1F1226FDC70100DBEFEB /* MHAccessoryCell.swift */,
+				5B8F1F1426FE34D800DBEFEB /* MHDataTypeCell.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				5BDF431E26F9FE7A001CE585 /* Images.swift in Sources */,
 				5BDF430626F9C508001CE585 /* HomeViewModel.swift in Sources */,
 				5BDF431C26F9D47E001CE585 /* MHRoomCell.swift in Sources */,
+				5B8F1F1526FE34D800DBEFEB /* MHDataTypeCell.swift in Sources */,
 				5BDF430926F9C62F001CE585 /* MHButtonCell.swift in Sources */,
 				5BDF430F26F9C728001CE585 /* UICollectionView + Extention.swift in Sources */,
 				5B8F1F1126FDC42300DBEFEB /* RoomDetailsViewModel.swift in Sources */,

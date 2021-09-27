@@ -48,6 +48,14 @@ class HomeViewController: UIViewController {
         viewModel.sections.asObservable()
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: viewModel.disposeBag)
+        
+        segmentSwich.rx.selectedSegmentIndex
+            .subscribe(onNext: { [weak self] index in
+                guard let self = self else { return }
+
+                self.viewModel.mainViewSwich.accept(index == 0 ? MainViewType.room : MainViewType.dataType)
+            })
+            .disposed(by: viewModel.disposeBag)
     }
     
     private func generateDataSource() -> RxCollectionViewSectionedAnimatedDataSource<Section> {
@@ -58,8 +66,6 @@ class HomeViewController: UIViewController {
             configureCell: { dataSource, collectionView, indexPath, _ in
                 let item: Item = dataSource[indexPath]
                 switch item {
-                case .button:
-                    return self.buttonCell(indexPath: indexPath)
                 case .room(let room):
                     return self.roomCell(indexPath: indexPath, room: room)
                 }
@@ -70,14 +76,27 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: - Cells
-    private func buttonCell(indexPath: IndexPath) -> MHCollectionViewCell {
-        let cell: MHButtonCell = collectionView.cell(indexPath: indexPath)
-        cell.configure(text: "text")
+    private func roomCell(indexPath: IndexPath, room: HMRoom) -> MHCollectionViewCell {
+        let cell: MHRoomCell = collectionView.cell(indexPath: indexPath)
+        cell.configure(with: room)
+        
+        cell.button.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                
+                let vc = RoomDetailsViewController()
+                    vc.viewModel = RoomDetailsViewModel(room: room)
+                
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+            })
+            .disposed(by: cell.disposeBag)
         
         return cell
     }
     
-    private func roomCell(indexPath: IndexPath, room: HMRoom) -> MHCollectionViewCell {
+    private func dataTypeCell(indexPath: IndexPath, room: HMRoom) -> MHCollectionViewCell {
         let cell: MHRoomCell = collectionView.cell(indexPath: indexPath)
         cell.configure(with: room)
         
@@ -105,8 +124,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let item = dataSource[indexPath]
         switch item {
-        case .button:
-            return MHButtonCell.cellSize
         case .room:
             return MHRoomCell.cellSize
         }
@@ -143,13 +160,13 @@ extension HomeViewController {
             $0.left.right.equalToSuperview()
         }
         
-        segmentSwich = UISegmentedControl(items: [MainViewType.room.rawValue, MainViewType.device.rawValue])
+        segmentSwich = UISegmentedControl(items: [MainViewType.room.rawValue, MainViewType.dataType.rawValue])
         segmentSwich.backgroundColor = .lightGray
         segmentSwich.selectedSegmentIndex = 0
         view.addSubview(segmentSwich)
         segmentSwich.snp.makeConstraints {
             $0.top.equalTo(navBar.snp.bottom).offset(16)
-            $0.left.right.equalToSuperview().inset(40)
+            $0.centerX.equalToSuperview()
         }
         
         // COLLECTION VIEW

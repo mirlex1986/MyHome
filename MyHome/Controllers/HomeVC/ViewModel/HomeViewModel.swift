@@ -11,17 +11,19 @@ import RxCocoa
 import RxDataSources
 import HomeKit
 
-enum MainViewType: String {
+enum MainViewType: String, Hashable {
     case room = "Комната"
-    case device = "Тип данных"
+    case dataType = "Тип данных"
 }
 
 final class HomeViewModel {
     // MARK: - Properties
     var primaryHome = BehaviorRelay<HMHome?>.init(value: nil)
+    var accessories = BehaviorRelay<[HMAccessory]>.init(value: [])
     
     let disposeBag = DisposeBag()
     let sections = BehaviorRelay<[SectionModel]>.init(value: [])
+    let mainViewSwich = BehaviorRelay<MainViewType>.init(value: .room)
     
     init() {
         
@@ -32,18 +34,35 @@ final class HomeViewModel {
     private func subscribe() {
         primaryHome
             .subscribe(onNext: { [weak self] home in
-                guard let self = self, let home = home else { return }
+                guard let self = self, home != nil, let accessories = home?.accessories else { return }
+
+                self.configureSections(by: self.mainViewSwich.value)
+                self.accessories.accept(accessories)
+            })
+            .disposed(by: disposeBag)
+        
+        mainViewSwich
+            .subscribe(onNext: { [weak self] value in
+                guard let self = self else { return }
                 
-                self.configureSections(home: home)
+                self.configureSections(by: self.mainViewSwich.value)
             })
             .disposed(by: disposeBag)
     }
     
-    func configureSections(home: HMHome) {
+    func configureSections(by type: MainViewType) {
+        guard let primaryHome = primaryHome.value else { return }
         var items: [ItemModel] = []
         
-        home.rooms.forEach { room in
-            items.append(.room(room: room))
+        switch mainViewSwich.value {
+        case .room:
+            primaryHome.rooms.forEach { room in
+                items.append(.room(room: room))
+            }
+        case .dataType:
+            accessories.value.forEach { accessory in
+                print(accessory.name)
+            }
         }
         
         sections.accept([.mainSection(items: items)])
@@ -57,13 +76,10 @@ extension HomeViewModel {
     }
     
     enum ItemModel {
-        case button
         case room(room: HMRoom)
         
         var id: String {
             switch self {
-            case .button:
-                return "button"
             case .room(let room):
                 return "room \(room.uniqueIdentifier)"
             }
