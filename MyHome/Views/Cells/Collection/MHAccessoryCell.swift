@@ -74,7 +74,6 @@ class MHAccessoryCell: RxCollectionViewCell {
                    let tempValue = (characteristic.value as? NSNumber)?.floatValue {
                     accessoryValueLabel.text = "\(String(format: "%.1f", tempValue))º"
                     accessoryImage.image = Images.heat
-                    accessoryImage.contentMode = .scaleAspectFit
                     accessoryValueLabel.isHidden = false
                 }
             }
@@ -96,7 +95,7 @@ extension MHAccessoryCell {
         
         accessoryImage = UIImageView()
         accessoryImage.image = UIImage(systemName: "house")
-        accessoryImage.tintColor = .darkGray
+        accessoryImage.tintColor = .gray
         accessoryImage.contentMode = .scaleAspectFill
         accessoryImage.clipsToBounds = true
         mainView.addSubview(accessoryImage)

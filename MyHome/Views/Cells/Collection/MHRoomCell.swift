@@ -41,8 +41,6 @@ class MHRoomCell: RxCollectionViewCell {
                 }
             }
         }
-        
-        
     }
 }
 
