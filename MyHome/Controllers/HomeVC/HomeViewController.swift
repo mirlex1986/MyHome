@@ -29,10 +29,15 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        homeManager.delegate = self
         makeUI()
         prepare()
         subscribe()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        homeManager.delegate = self
     }
     
     // MARK: - Functions
