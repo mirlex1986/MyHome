@@ -61,7 +61,7 @@ final class HomeViewModel {
             }
         case .dataType:
             accessories.value.forEach { accessory in
-                print(accessory.name)
+                items.append(.button(text: accessory))
             }
         }
         
@@ -77,11 +77,14 @@ extension HomeViewModel {
     
     enum ItemModel {
         case room(room: HMRoom)
+        case button(text: HMAccessory)
         
         var id: String {
             switch self {
             case .room(let room):
                 return "room \(room.uniqueIdentifier)"
+            case .button(let text):
+                return "button \(text))"
             }
         }
     }

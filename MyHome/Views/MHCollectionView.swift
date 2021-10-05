@@ -17,5 +17,6 @@ extension MHCollectionView {
         register(cellType: MHButtonCell.self)
         register(cellType: MHRoomCell.self)
         register(cellType: MHAccessoryCell.self)
+        register(cellType: MHDataTypeCell.self)
     }
 }
